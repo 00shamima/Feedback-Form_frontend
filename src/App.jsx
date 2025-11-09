@@ -61,34 +61,38 @@ function App() {
       
       <main className="min-h-screen bg-gray-100 py-6 sm:py-12">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Routes>
-            
-            <Route path="/" element={<Navigate to="/login" replace />} />
-            
-            <Route path="/login" element={<LoginForm onUserLogin={handleUserLogin} onAdminLogin={handleAdminLogin} />} />
-            
-            <Route 
-                path="/form-library" 
-                element={isUserLoggedIn || isAdminLoggedIn ? <FormLibrary /> : <Navigate to="/login" replace />} 
-            />
-            
-            <Route path="/survey/:topic" element={<FeedbackForm />} />
-            <Route path="/survey/custom-:uniqueFormId" element={<CustomFeedbackForm />} />
+         <Routes>
 
-            <Route 
-                path="/admin-login" 
-                element={<AdminLoginGate onAdminLogin={handleAdminLogin} />} 
-            />
+  <Route path="/" element={<Navigate to="/login" replace />} />
 
-            <Route 
-              path="/admin" 
-              element={
-                <AdminRoute>
-                  <AdminDashboard />
-                </AdminRoute>
-              } 
-            />
-          </Routes>
+  <Route path="/login" element={<LoginForm onUserLogin={handleUserLogin} onAdminLogin={handleAdminLogin} />} />
+
+  <Route 
+    path="/form-library" 
+    element={isUserLoggedIn || isAdminLoggedIn ? <FormLibrary /> : <Navigate to="/login" replace />} 
+  />
+
+  <Route path="/survey/:topic" element={<FeedbackForm />} />
+  <Route path="/survey/custom-:uniqueFormId" element={<CustomFeedbackForm />} />
+
+  <Route 
+    path="/admin-login" 
+    element={<AdminLoginGate onAdminLogin={handleAdminLogin} />} 
+  />
+
+  <Route 
+    path="/admin" 
+    element={
+      <AdminRoute>
+        <AdminDashboard />
+      </AdminRoute>
+    } 
+  />
+  
+  {/* Fallback route for any unmatched URL */}
+  <Route path="*" element={<Navigate to="/form-library" replace />} />
+
+</Routes>
         </div>
       </main>
     </Router>
