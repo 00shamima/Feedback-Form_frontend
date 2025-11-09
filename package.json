@@ -1,22 +1,16 @@
 {
-  
-  "name": "client",
-  
+   "homepage": "https://00shamima.github.io/Feedback-Form_frontend",
+  "name": "feedback-form",
   "private": true,
-  
   "version": "0.0.0",
-  
   "type": "module",
-  
   "scripts": {
   
     
   "predeploy": "npm run build",
-  
-    
-  "deploy": "gh-pages -d dist",
-  
-    
+
+  "postinstall": "npm run build",
+  "deploy": "gh-pages -d dist", 
   "dev": "vite",
   
     
